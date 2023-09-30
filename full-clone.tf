@@ -3,16 +3,16 @@
 # Create a new VM from a clone
 
 # enter the the name of the new device
-resource "proxmox_vm_qemu" "testing02" {
+resource "proxmox_vm_qemu" "ansi-1" {
 
     # VM General Settings
 
     # which proxmox server should this be launched on?
-    target_node = "node01"
+    target_node = "192.168.100.11"
     # make sure this ID is unqiue.  If you reuse ID's you will get errors :)
     vmid = "103"
     # name of the new device again
-    name = "testing02"
+    name = MICRO
     desc = "Description"
 
     # VM Advanced General Settings
@@ -53,13 +53,13 @@ resource "proxmox_vm_qemu" "testing02" {
 
     # (Optional) IP Address and Gateway
     # set to your network
-    # ipconfig0 = "ip=192.168.1.7/24,gw=192.168.1.1"
+    # ipconfig0 = "ip=192.168.100.7/24,gw=192.168.100.1"
 
     # (Optional) Default User
-    ciuser = "ubuntu"
+    ciuser = "shots"
 
     # (Optional) Add your SSH KEY
     sshkeys = <<EOF
-    YOUR_PUBLIC_SSH_KEY_FROM_ANSIBLE_SERVER
+    ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDI8vhHs5zHKl18/9righr2wf4J6qmvRqHN0KJrquIiuFPeoJHBRni7wEuEqXOrLFtS+Hpqxl7b3nsZucgwPCAeYZUE9Hq3tqthyWQ8OiJYCxOEwD/tWMJnEhUgMd6pZOM+cIi4Ubt4DCiOGlHJrjLK1MSHifSULwYoJw96rayy0jF8nTBDKJK8o2CR1xFXb0gy4WPGKiEJbMlcIQ1p44qCAauqle2fsz+KzppXFofBW0qCyNuDwHk0ltsgss95QdxW1mF0s3KHz4ugpjuBMVwGqNVsZ+Ce7HWtbMx5tKMRA73zRLsFRJ+LAbDmZZQhHnoMjfmlzLDxen8tGRn6aIM7
     EOF
 }
